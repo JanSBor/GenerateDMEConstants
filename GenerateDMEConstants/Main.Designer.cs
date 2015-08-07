@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FileDlg = new System.Windows.Forms.OpenFileDialog();
+            this.ExtensionFileDlg = new System.Windows.Forms.OpenFileDialog();
             this.GenerateFile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ExtensionFileName = new System.Windows.Forms.TextBox();
@@ -42,20 +42,23 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LanguageVB = new System.Windows.Forms.RadioButton();
             this.LanguageCSharp = new System.Windows.Forms.RadioButton();
+            this.tnamespace = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.OutputFileDlg = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // FileDlg
+            // ExtensionFileDlg
             // 
-            this.FileDlg.FileName = "openFileDialog1";
+            this.ExtensionFileDlg.FileName = "openFileDialog1";
             // 
             // GenerateFile
             // 
             this.GenerateFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(149)))), ((int)(((byte)(0)))));
             this.GenerateFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(149)))), ((int)(((byte)(0)))));
             this.GenerateFile.FlatAppearance.BorderSize = 0;
-            this.GenerateFile.Location = new System.Drawing.Point(273, 191);
+            this.GenerateFile.Location = new System.Drawing.Point(273, 237);
             this.GenerateFile.Name = "GenerateFile";
             this.GenerateFile.Size = new System.Drawing.Size(114, 44);
             this.GenerateFile.TabIndex = 0;
@@ -181,11 +184,34 @@
             this.LanguageCSharp.Text = "C#";
             this.LanguageCSharp.UseVisualStyleBackColor = true;
             // 
+            // tnamespace
+            // 
+            this.tnamespace.Location = new System.Drawing.Point(101, 189);
+            this.tnamespace.Name = "tnamespace";
+            this.tnamespace.Size = new System.Drawing.Size(240, 20);
+            this.tnamespace.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 192);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Namespace:";
+            // 
+            // OutputFileDlg
+            // 
+            this.OutputFileDlg.CheckFileExists = false;
+            this.OutputFileDlg.FileName = "openFileDialog1";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 248);
+            this.ClientSize = new System.Drawing.Size(419, 330);
+            this.Controls.Add(this.tnamespace);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.SelectOutputFile);
             this.Controls.Add(this.OutputFileName);
@@ -208,7 +234,7 @@
 
         #endregion
 
-        private System.Windows.Forms.OpenFileDialog FileDlg;
+        private System.Windows.Forms.OpenFileDialog ExtensionFileDlg;
         private System.Windows.Forms.Button GenerateFile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox ExtensionFileName;
@@ -222,6 +248,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton LanguageVB;
         private System.Windows.Forms.RadioButton LanguageCSharp;
+        private System.Windows.Forms.TextBox tnamespace;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.OpenFileDialog OutputFileDlg;
     }
 }
 

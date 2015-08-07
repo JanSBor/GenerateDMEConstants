@@ -19,7 +19,7 @@ namespace GenerateDMEConstants
     class ColumnList
     {
         public string identifier { get; set; }
-        public long ColumnNo { get; set; }
+        public long columnNo { get; set; }
         public long tableno { get; set; }
     }
 
