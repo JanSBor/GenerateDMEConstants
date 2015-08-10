@@ -15,8 +15,6 @@ namespace GenerateDMEConstants
     public partial class Main : Form
     {
 
-        const string lconstPrefix = "public const long ";
-        const int paddingsize = 4;
 
         public Main()
         {
@@ -55,6 +53,10 @@ namespace GenerateDMEConstants
 
         private void GenerateFile_Click(object sender, EventArgs e)
         {
+            string snamespace = tnamespace.Text; //TODO: Check that it actually has a content
+            string soutputfilename = OutputFileName.Text; //TODO: Check that it actually has a content
+            StreamWriter swOutputFile = new StreamWriter(soutputfilename);
+
             //Read Extension file
             XmlDocument xd = new XmlDocument();
             xd.Load(ExtensionFileName.Text);
@@ -71,13 +73,14 @@ namespace GenerateDMEConstants
             //Write class file
             if (LanguageCSharp.Checked)
             {
+                CsharpFile c = new CsharpFile(soutputfilename, snamespace, swOutputFile);
+                c.AddClassContent(swOutputFile, ExtensionName, lTables, lColumns);
 
-                bool lRetVal = CreateCSharpFile(ExtensionName, lTables, lColumns);
 
             }
             else
             {
-
+                //TODO
             }
 
             Console.WriteLine("heisann");
@@ -147,80 +150,6 @@ namespace GenerateDMEConstants
             return lColumns;
         }
 
-        private bool CreateCSharpFile(string ExtensionName, List<TableList> lTableList, List<ColumnList> lColumnList)
-        {
-            //The using statments can be removed, but keep them since they are there as default
-            
-            const string lusing1 = "using System;";
-            const string lusing2 = "using System.Collections.Generic;";
-            const string lusing3 = "using System.Linq;";
-            const string lusing4 = "using System.Text;";
-            const string lusing5 = "using System.Threading.Tasks;";
-            const string lnamespace = "namespace ";
-            
-            const string lTableNo = "TableNo = ";
-            bool bRes = false;
-
-            //Create the file
-            StreamWriter outputfile = new StreamWriter(OutputFileName.Text);
-
-            //TODO: Check write access etc
-            outputfile.WriteLine(lusing1);
-            outputfile.WriteLine(lusing2);
-            outputfile.WriteLine(lusing3);
-            outputfile.WriteLine(lusing4);
-            outputfile.WriteLine(lusing5);
-            outputfile.WriteLine(Environment.NewLine); //This will actually give two empty lines
-            outputfile.WriteLine(lnamespace + tnamespace.Text); //TODO: Check that the field has a value
-            outputfile.WriteLine("{");
-
-            //Loop through all the tables, and add the constants
-            foreach (TableList table in lTableList)
-            {
-                //The name of the class should be the same as the name of the table
-                outputfile.WriteLine("".PadRight(paddingsize) + "class " + table.identifier);
-                outputfile.WriteLine("".PadRight(paddingsize) + "{" + Environment.NewLine);
-
-                //Write TableNo
-                outputfile.WriteLine("".PadRight(paddingsize) + "".PadRight(paddingsize) + lconstPrefix + lTableNo + table.tableno + ";");
-
-                //Add columns. 
-                bRes = AddColumnsCSharp(table.tableno, lColumnList, outputfile);
-
-                //Empty line before closing the class
-                outputfile.WriteLine(Environment.NewLine); //This will actually give two empty lines
-
-                outputfile.WriteLine("".PadRight(paddingsize) + "}" + Environment.NewLine);
-
-
-            }
-
-            outputfile.WriteLine("}");
-            outputfile.Close();
-
-            bool retval = true;
-            return retval;
-
-        }
-
-        bool AddColumnsCSharp(long tableno, List<ColumnList> lColumnList, StreamWriter outputfile)
-        {
-
-            //TODO: Yep, missing errorhandling here as well
-
-            List<ColumnList> filtertedColumnList;
-
-            //Find all columns belonging to this table. 
-            filtertedColumnList = lColumnList.FindAll(filter => filter.tableno == tableno);
-            foreach (ColumnList Column in lColumnList)
-            {
-
-                outputfile.WriteLine("".PadRight(paddingsize) + "".PadRight(paddingsize) + lconstPrefix + Column.identifier + " = " + Column.columnNo + ";");
-
-            }
-
-            return true;
-        }
-
+      
     }
 }
