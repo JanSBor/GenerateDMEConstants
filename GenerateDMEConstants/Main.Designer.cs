@@ -31,20 +31,22 @@
             this.ExtensionFileDlg = new System.Windows.Forms.OpenFileDialog();
             this.GenerateFile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.ExtensionFileName = new System.Windows.Forms.TextBox();
             this.SelectExtFile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TypeEnum = new System.Windows.Forms.RadioButton();
             this.TypeClass = new System.Windows.Forms.RadioButton();
             this.SelectOutputFile = new System.Windows.Forms.Button();
-            this.OutputFileName = new System.Windows.Forms.TextBox();
+            this.tOutputFileName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LanguageVB = new System.Windows.Forms.RadioButton();
             this.LanguageCSharp = new System.Windows.Forms.RadioButton();
-            this.tnamespace = new System.Windows.Forms.TextBox();
+            this.tNamespace = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.OutputFileDlg = new System.Windows.Forms.OpenFileDialog();
+            this.SaveSettings = new System.Windows.Forms.CheckBox();
+            this.cExtensionFileName = new System.Windows.Forms.ComboBox();
+            this.DeleteSettings = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -74,13 +76,6 @@
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Extension file:";
-            // 
-            // ExtensionFileName
-            // 
-            this.ExtensionFileName.Location = new System.Drawing.Point(101, 18);
-            this.ExtensionFileName.Name = "ExtensionFileName";
-            this.ExtensionFileName.Size = new System.Drawing.Size(240, 20);
-            this.ExtensionFileName.TabIndex = 2;
             // 
             // SelectExtFile
             // 
@@ -135,12 +130,12 @@
             this.SelectOutputFile.UseVisualStyleBackColor = true;
             this.SelectOutputFile.Click += new System.EventHandler(this.SelectOutputFile_Click);
             // 
-            // OutputFileName
+            // tOutputFileName
             // 
-            this.OutputFileName.Location = new System.Drawing.Point(101, 163);
-            this.OutputFileName.Name = "OutputFileName";
-            this.OutputFileName.Size = new System.Drawing.Size(240, 20);
-            this.OutputFileName.TabIndex = 6;
+            this.tOutputFileName.Location = new System.Drawing.Point(101, 163);
+            this.tOutputFileName.Name = "tOutputFileName";
+            this.tOutputFileName.Size = new System.Drawing.Size(240, 20);
+            this.tOutputFileName.TabIndex = 6;
             // 
             // label2
             // 
@@ -184,12 +179,12 @@
             this.LanguageCSharp.Text = "C#";
             this.LanguageCSharp.UseVisualStyleBackColor = true;
             // 
-            // tnamespace
+            // tNamespace
             // 
-            this.tnamespace.Location = new System.Drawing.Point(101, 189);
-            this.tnamespace.Name = "tnamespace";
-            this.tnamespace.Size = new System.Drawing.Size(240, 20);
-            this.tnamespace.TabIndex = 10;
+            this.tNamespace.Location = new System.Drawing.Point(101, 189);
+            this.tNamespace.Name = "tNamespace";
+            this.tNamespace.Size = new System.Drawing.Size(240, 20);
+            this.tNamespace.TabIndex = 10;
             // 
             // label3
             // 
@@ -205,24 +200,61 @@
             this.OutputFileDlg.CheckFileExists = false;
             this.OutputFileDlg.FileName = "openFileDialog1";
             // 
+            // SaveSettings
+            // 
+            this.SaveSettings.AutoSize = true;
+            this.SaveSettings.Checked = true;
+            this.SaveSettings.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SaveSettings.Location = new System.Drawing.Point(273, 287);
+            this.SaveSettings.Name = "SaveSettings";
+            this.SaveSettings.Size = new System.Drawing.Size(90, 17);
+            this.SaveSettings.TabIndex = 11;
+            this.SaveSettings.Text = "Save settings";
+            this.SaveSettings.UseVisualStyleBackColor = true;
+            // 
+            // cExtensionFileName
+            // 
+            this.cExtensionFileName.FormattingEnabled = true;
+            this.cExtensionFileName.Location = new System.Drawing.Point(101, 18);
+            this.cExtensionFileName.Name = "cExtensionFileName";
+            this.cExtensionFileName.Size = new System.Drawing.Size(240, 21);
+            this.cExtensionFileName.TabIndex = 12;
+            this.cExtensionFileName.SelectedIndexChanged += new System.EventHandler(this.cExtensionFileName_SelectedIndexChanged);
+            // 
+            // DeleteSettings
+            // 
+            this.DeleteSettings.BackColor = System.Drawing.Color.Transparent;
+            this.DeleteSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(149)))), ((int)(((byte)(0)))));
+            this.DeleteSettings.FlatAppearance.BorderSize = 0;
+            this.DeleteSettings.Location = new System.Drawing.Point(26, 237);
+            this.DeleteSettings.Name = "DeleteSettings";
+            this.DeleteSettings.Size = new System.Drawing.Size(114, 44);
+            this.DeleteSettings.TabIndex = 13;
+            this.DeleteSettings.Text = "Delete settings";
+            this.DeleteSettings.UseVisualStyleBackColor = false;
+            this.DeleteSettings.Click += new System.EventHandler(this.DeleteSettings_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(419, 330);
-            this.Controls.Add(this.tnamespace);
+            this.Controls.Add(this.DeleteSettings);
+            this.Controls.Add(this.cExtensionFileName);
+            this.Controls.Add(this.SaveSettings);
+            this.Controls.Add(this.tNamespace);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.SelectOutputFile);
-            this.Controls.Add(this.OutputFileName);
+            this.Controls.Add(this.tOutputFileName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.SelectExtFile);
-            this.Controls.Add(this.ExtensionFileName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GenerateFile);
             this.Name = "Main";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -237,20 +269,22 @@
         private System.Windows.Forms.OpenFileDialog ExtensionFileDlg;
         private System.Windows.Forms.Button GenerateFile;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ExtensionFileName;
         private System.Windows.Forms.Button SelectExtFile;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton TypeEnum;
         private System.Windows.Forms.RadioButton TypeClass;
         private System.Windows.Forms.Button SelectOutputFile;
-        private System.Windows.Forms.TextBox OutputFileName;
+        private System.Windows.Forms.TextBox tOutputFileName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton LanguageVB;
         private System.Windows.Forms.RadioButton LanguageCSharp;
-        private System.Windows.Forms.TextBox tnamespace;
+        private System.Windows.Forms.TextBox tNamespace;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog OutputFileDlg;
+        private System.Windows.Forms.CheckBox SaveSettings;
+        private System.Windows.Forms.ComboBox cExtensionFileName;
+        private System.Windows.Forms.Button DeleteSettings;
     }
 }
 
